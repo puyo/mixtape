@@ -3,12 +3,8 @@
   "repository": {},
   "license": "CC-BY-4.0",
   "devDependencies": {
-    "jshint": "latest",
     "backbone": "latest",
     "jquery": "latest",
     "underscore": "latest"
-  },
-  "scripts": {
-    "lint": "jshint v?/**.js"
   }
 }
