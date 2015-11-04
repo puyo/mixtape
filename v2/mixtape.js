@@ -3,8 +3,7 @@ mixtape = this || {};
 
 mixtape.Song = Backbone.Model.extend({
   defaults: {
-    search: "",
-    editing: false
+    search: ""
   }
 });
 
@@ -46,6 +45,10 @@ mixtape.SongView = Backbone.View.extend({
       this.$el.find(".search-input").focus();
     } else {
       this.$el.removeClass("editing");
+
+      if (this.model.get('search').length === 0) {
+        this.model.destroy();
+      }
     }
   },
 
@@ -54,7 +57,8 @@ mixtape.SongView = Backbone.View.extend({
   },
 
   _onSave: function() {
-    this.model.set({search: this.$el.find(".search-input").val() });
+    var val = this.$el.find(".search-input").val();
+    this.model.set({search: val});
     this.setEditMode(false);
   },
 
