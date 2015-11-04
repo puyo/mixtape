@@ -1,0 +1,43 @@
+html, body {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+button, input {
+  font-size: 20px;
+}
+
+button {
+  padding: 0.2em 0.5em;
+}
+
+/* ---------------------- */
+
+.container {
+  width: 720px;
+  margin: 2em auto;
+}
+
+.song {
+  border-bottom: 10px solid black;
+  padding: 1em;
+  overflow: hidden;
+}
+
+.song button {
+  float: right;
+}
+
+.song input {
+  float: left;
+}
+
+.song .edit {
+  display: none;
+}
+.song.editing .edit {
+  display: block;
+}
+.song.editing .view {
+  display: none;
+}

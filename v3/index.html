@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Mixtape 3</title>
+    <link rel="stylesheet" media="all" href="mixtape.css"></link>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Mixtape 3</h1>
+      <div class="mixtape-app">
+        <button class="add-new-song">Add Song</button>
+        <div class="song-list">
+        </div>
+      </div>
+      <p><a href="#help">Help</a></p>
+    </div>
+
+    <script type="text/template" id="song-template">
+      <div class="view">
+        <%= search %>
+        <button class="edit-song">Edit</button>
+      </div>
+      <div class="edit">
+        <input type="text" class="search-input" placeholder="Search" value="<%= search %>"></input>
+        <button class="save-song">Save</button>
+        <button class="cancel-edit">Cancel</button>
+        <button class="remove-song">Remove</button>
+      </div>
+    </script>
+
+    <!-- <script type="text/template" id="keyboard-shortcuts"> -->
+    <!-- </script> -->
+    <div id="help" class="lightbox" style="display:none">
+      <div class="lightbox-content">
+        <h2>Help</h2>
+        + Add a new track <br>
+        <p><a href="#">Close</a></p>
+      </div>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/underscore/underscore-min.js"></script>
+    <script src="../node_modules/backbone/backbone-min.js"></script>
+    <script src="mixtape.js"></script>
+  </body>
+</html>
