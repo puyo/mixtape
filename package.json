@@ -1,5 +1,7 @@
 {
   "name": "mixtape",
+  "repository": {},
+  "license": "CC-BY-4.0",
   "devDependencies": {
     "jshint": "latest",
     "backbone": "latest",
