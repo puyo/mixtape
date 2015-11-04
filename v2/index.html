@@ -19,22 +19,19 @@
     <script type="text/template" id="song-template">
       <div class="view">
         <%= search %>
-        <button class="edit-song btn btn-default">Edit</button>
+        <button class="edit-song">Edit</button>
       </div>
       <div class="edit">
-        <form class="form-horizontal">
-          <input type="text" class="form-control search-input" placeholder="Search" value="<%= search %>"></input>
-        </form>
-        <button class="save-song btn btn-default">Save</button>
-        <button class="cancel-edit btn btn-default">Cancel</button>
-        <button class="remove-song btn btn-default">Remove</button>
+        <input type="text" class="search-input" placeholder="Search" value="<%= search %>"></input>
+        <button class="save-song">Save</button>
+        <button class="cancel-edit">Cancel</button>
+        <button class="remove-song">Remove</button>
       </div>
     </script>
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/underscore/underscore-min.js"></script>
     <script src="../node_modules/backbone/backbone-min.js"></script>
-    <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
     <script src="mixtape.js"></script>
   </body>
 </html>
