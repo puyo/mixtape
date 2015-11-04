@@ -30,10 +30,13 @@ button {
 .lightbox-content {
   background-color: white;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-  border: 1px solid black;
   padding: 1em;
   max-width: 50%;
   margin: 10% auto;
+}
+
+.lightbox-content h2 {
+  margin-top: 0;
 }
 
 .song {
