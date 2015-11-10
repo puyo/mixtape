@@ -1,4 +1,4 @@
-mixtape = this || {};
+var mixtape = mixtape || {};
 
 
 mixtape.Song = Backbone.Model.extend({
@@ -9,7 +9,7 @@ mixtape.Song = Backbone.Model.extend({
 
 
 mixtape.SongList = Backbone.Collection.extend({
-  model: Song,
+  model: mixtape.Song,
 });
 
 
@@ -99,7 +99,7 @@ mixtape.AppView = Backbone.View.extend({
   },
 
   addSongView: function(song) {
-    var view = new SongView({model: song});
+    var view = new mixtape.SongView({model: song});
     this.$(".song-list").append(view.render().el);
   },
 
@@ -122,6 +122,6 @@ mixtape.AppView = Backbone.View.extend({
 
 $(document).ready(function(){
   mixtape.songList = new mixtape.SongList([{search: "BMO Remix"}, {search: "Jay Z On To The Next One"}]);
-  mixtape.appView = new mixtape.AppView(songList);
+  mixtape.appView = new mixtape.AppView(mixtape.songList);
 });
 

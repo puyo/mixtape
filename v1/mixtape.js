@@ -1,4 +1,4 @@
-mixtape = this || {};
+var mixtape = mixtape || {};
 
 mixtape.Song = Backbone.Model.extend({
   defaults: {
