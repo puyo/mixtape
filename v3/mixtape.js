@@ -24,6 +24,7 @@ mixtape.SongView = Backbone.View.extend({
     "click .cancel-edit": "_onCancel",
     "keypress .search-input": "_onKeyPressInSearch",
     "click .remove-song": "_onRemove",
+    "click .search": "_onView",
   },
 
   initialize: function() {
@@ -50,6 +51,10 @@ mixtape.SongView = Backbone.View.extend({
         this.model.destroy();
       }
     }
+  },
+
+  _onView: function() {
+    mixtape.router.navigate('/songs/' + this.model.cid, true);
   },
 
   _onEdit: function() {
@@ -83,8 +88,19 @@ mixtape.SongView = Backbone.View.extend({
 });
 
 
+mixtape.SongDetailView = Backbone.View.extend({
+  template: _.template($("#song-detail-template").html()),
+
+  el: $(".song-detail"),
+
+  render: function() {
+    this.$el.html(this.template(this.model.attributes));
+  },
+});
+
+
 mixtape.AppView = Backbone.View.extend({
-  el: $(".mixtape-app"),
+  el: $(".mixtape"),
 
   events: {
     "click .add-new-song": "onAddNewSong",
@@ -126,18 +142,32 @@ mixtape.AppView = Backbone.View.extend({
 mixtape.Router = Backbone.Router.extend({
   routes: {
     "help": "help",
-    "": "mixtape",
+    "songs/:id": "songShow",
+    "*other": "mixtape",
+  },
+
+  songShow: function(id) {
+    var song = mixtape.songList.get(id);
+    console.log('songShow');
+    var view = new mixtape.SongDetailView({model: song});
+    view.render();
+    this.showPage('detail');
   },
 
   help: function() {
     console.log('help');
-    $('#help').show();
+    this.showPage('help');
   },
 
   mixtape: function() {
     console.log('mixtape');
-    $('#help').hide();
+    this.showPage('list');
   },
+
+  showPage: function(pageClass) {
+    $('.page:not(.' + pageClass+ ')').hide();
+    $('.page.' + pageClass).show();
+  }
 
 });
 
@@ -150,7 +180,7 @@ $(document).ready(function(){
   $('body').on("keypress", function(e){
     console.log(e.which);
     if (e.which === 63) { // ?
-      mixtape.router.navigate('help', {trigger: true});
+      mixtape.router.navigate('help', true);
     } else if (e.which === 43) { // +
       mixtape.songList.unshift({ unsaved: true });
     }
@@ -158,5 +188,3 @@ $(document).ready(function(){
 
   Backbone.history.start();
 });
-
-
